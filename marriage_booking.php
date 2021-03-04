@@ -155,7 +155,7 @@ session_start();
             <?php $_SESSION['Rid'] = $r_idD; ?>
             <h5 class="card-title"><?php echo $titleD; ?></h5>
             <p class="card-text"><?php echo $descriptionD; ?></p>
-            <a href="marriage_room_booking.php" class="btn btn-primary">Go somewhere</a>
+            <a href="marriage_room_booking.php" class="btn btn-primary">Book Room</a>
 
         <?php }
       }
