@@ -111,31 +111,18 @@ $r_idD =  $_SESSION['Rid'];
                                 <label for="phone">Date</label>
                                 <input type="date" name="date" id="date" class="form-control ">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control ">
+
+                            <div class="col-md-6 form-group">
+                                <label for="phone">Email</label>
+                                <input type="email" name="email" id="email" class="form-control ">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="submit" name="submit" value="Send Message" class="btn btn-primary text-white font-weight-bold">
+                                <input type="submit" name="submit" value="Book My Room" class="btn btn-primary text-white font-weight-bold">
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
-                    <div class="row">
-                        <div class="col-md-10 ml-auto contact-info">
-                            <p><span class="d-block">Address:</span> <span> Village Nagukhedi, Ujjain Road , Dewas</span></p>
-                            <p><span class="d-block">Phone:</span> <span> (+91) 9826019190</span><br>
-                                <span> (+91) 6262440404</span><br>
-                                <span> (+91) 6262889898</span>
-                            </p>
-                            <p><span class="d-block">Email:</span> <span> Theroyalpalace.com</span></p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -205,10 +192,8 @@ $r_idD =  $_SESSION['Rid'];
     <script src="js/main.js"></script>
 </body>
 
-
-
-
 <?php
+include_once './sql_con.php';
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
@@ -216,41 +201,12 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $Aadhaar = $_POST['Aadhaar'];
     $date = $_POST['date'];
-    // print_r($name);
-    // die();
 
-    // if (!preg_match("/^[a-zA-Z-']*$/", $name)) {
-    //     // $nameErr = "Only letters and white space allowed";
-    //     echo "<script>alert('name Space not allowed in Name')</script>";
-    //     exit();
-    // }
-    // if (!preg_match("/^[a-zA-Z-']*$/", $username)) {
-    //     // $nameErr = "Only letters and white space allowed";
-    //     echo "<script>alert('namespace not allowed Username')</script>";
-    //     exit();
-    // }
-    // if (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email)) {
-    //     // $nameErr = "Only letters and white space allowed";
-    //     echo "<script>alert('Enter Valid Email')</script>";
-    //     exit();
-    // }
-    // if (!preg_match("/^[0-9]{10}+$/", $mobile)) {
-    //     // $nameErr = "Only letters and white space allowed";
-    //     echo "<script>alert('Enter Only Number')</script>";
-    //     exit();
-    // }
-
-
-    $stmt = $link->prepare("INSERT INTO __rooms_create(`r_id`, `name`,`Aadhaar`,`email`,`mobile`,`date`) VALUE('$r_idD',?,?,?,?,?)");
-    $stmt->bind_param("isiiss", $r_idD,  $name, $Aadhaar, $email, $mobile, $date);
+    $stmt = $link->prepare("INSERT INTO __rooms_create(`name`,`Aadhaar`,`email`,`mobile`,`date`) VALUE(?,?,?,?,?)");
+    $stmt->bind_param("siiss", $name, $Aadhaar, $email, $mobile, $date);
     $stmt->execute();
-    if ($stmt->error) exit($stmt->error. 'failur');
-    print_r("Done");
-    // $stmtS = $link->prepare("SELECT * FROM __master_users WHERE id=(last_insert_id())");
-    // $stmtS->execute();
-    // if ($stmtS->error) exit($stmtS->error);
-    // $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    // echo "<script>alert('Registration Done')</script>";
+    if ($stmt->error) exit($stmt->error . 'failur');
+    echo "<script>alert('Booking Done')</script>";
     exit();
 }
 ?>

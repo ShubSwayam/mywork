@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if (isset($_SESSION['email']) == "") {
   echo "<script>alert('Booking Not Allowed , Wrong credentials.......  ')</script>";
@@ -97,10 +97,10 @@ if (isset($_SESSION['email']) == "") {
       <div class="site-block-half d-block d-lg-flex bg-white" data-aos="fade" data-aos-delay="200">
         <a href="#" class="image d-block bg-image-2 order-2" style="background-image: url('images/img_2.jpg');"></a>
         <div class="text order-1">
-          <span class="d-block mb-4"><span class="display-4 text-primary">$299</span> <span class="text-uppercase letter-spacing-2">/ per night</span> </span>
+          <!-- <span class="d-block mb-4"><span class="display-4 text-primary">$299</span> <span class="text-uppercase letter-spacing-2">/ per night</span> </span> -->
           <h2 class="mb-4">Party Booking</h2>
           <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-          <p><a href="#" class="btn btn-primary text-white">Book Now</a></p>
+          <p><a href="party_booking.php" class="btn btn-primary text-white">Explore Booking</a></p>
         </div>
       </div>
       <div class="site-block-half d-block d-lg-flex bg-white" data-aos="fade" data-aos-delay="100">

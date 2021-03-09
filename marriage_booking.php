@@ -135,6 +135,7 @@ session_start();
         $stmt = $link->prepare("SELECT * from __rooms where date between '$from ' AND ' $to' ORDER by date");
         $stmt->execute();
         $newus = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        // print_r(json_encode($newus));
         $count_data = count($newus);
         if ($count_data == "0") {
           echo "<script>alert('Rooms Not Available')</script>";
@@ -147,20 +148,30 @@ session_start();
             $titleD = $val['title'];
             $descriptionD = $val['description'];
             $r_idD = $val['r_id'];
-          }
-          ?>
-          <img class="card-img-top" src="./images/room.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"><?php echo $r_idD; ?></h5>
-            <?php $_SESSION['Rid'] = $r_idD; ?>
-            <h5 class="card-title"><?php echo $titleD; ?></h5>
-            <p class="card-text"><?php echo $descriptionD; ?></p>
-            <a href="marriage_room_booking.php" class="btn btn-primary">Book Room</a>
 
-        <?php }
+            // print_r($val);
+          ?>
+          <h1>Rooms</h1>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm">
+                  <img class="card-img-top" src="./images/room.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $r_idD; ?></h5>
+                    <?php $_SESSION['Rid'] = $r_idD; ?>
+                    <h5 class="card-title"><?php echo $titleD; ?></h5>
+                    <p class="card-text"><?php echo $descriptionD; ?></p>
+                    <a href="marriage_room_booking.php" class="btn btn-primary">Book Room</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+      <?php }
+        }
       }
-        ?>
-          </div>
+      ?>
+
     </div>
   </div>
 
